@@ -10,9 +10,47 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Simple rate limiting middleware
+const rateLimitMap = new Map();
+const RATE_LIMIT_WINDOW = 60000; // 1 minute
+const MAX_REQUESTS = 30; // 30 requests per minute
+
+function rateLimit(req, res, next) {
+    const ip = req.ip || req.connection.remoteAddress;
+    const now = Date.now();
+    
+    if (!rateLimitMap.has(ip)) {
+        rateLimitMap.set(ip, []);
+    }
+    
+    const requests = rateLimitMap.get(ip).filter(time => now - time < RATE_LIMIT_WINDOW);
+    
+    if (requests.length >= MAX_REQUESTS) {
+        return res.status(429).json({ error: 'Too many requests, please try again later.' });
+    }
+    
+    requests.push(now);
+    rateLimitMap.set(ip, requests);
+    
+    // Cleanup old entries periodically
+    if (Math.random() < 0.01) {
+        for (const [key, value] of rateLimitMap.entries()) {
+            const filtered = value.filter(time => now - time < RATE_LIMIT_WINDOW);
+            if (filtered.length === 0) {
+                rateLimitMap.delete(key);
+            } else {
+                rateLimitMap.set(key, filtered);
+            }
+        }
+    }
+    
+    next();
+}
+
 // Middleware
 app.use(express.json());
 app.use(express.static('public'));
+app.use('/api', rateLimit);
 
 // API routes (mock implementations for local development)
 app.post('/api/chat', async (req, res) => {

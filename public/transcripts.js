@@ -35,6 +35,12 @@ class TranscriptsManager {
         });
     }
 
+    escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
     createTranscriptItem(transcript, index) {
         const item = document.createElement('div');
         item.className = 'transcript-item';
@@ -44,10 +50,16 @@ class TranscriptsManager {
         
         const header = document.createElement('div');
         header.className = 'transcript-header';
-        header.innerHTML = `
-            <h3>Hovor #${index + 1}</h3>
-            <div class="transcript-date">${dateStr} | Délka: ${transcript.duration}</div>
-        `;
+        
+        const h3 = document.createElement('h3');
+        h3.textContent = `Hovor #${index + 1}`;
+        
+        const dateDiv = document.createElement('div');
+        dateDiv.className = 'transcript-date';
+        dateDiv.textContent = `${dateStr} | Délka: ${transcript.duration}`;
+        
+        header.appendChild(h3);
+        header.appendChild(dateDiv);
         
         const content = document.createElement('div');
         content.className = 'transcript-content';

@@ -163,28 +163,66 @@ class CallManager {
         this.summaryContainer.innerHTML = summary;
     }
 
+    escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
     createCallSummary() {
-        const duration = this.callDuration.textContent;
+        const duration = this.escapeHtml(this.callDuration.textContent);
+        const dateTime = this.escapeHtml(new Date().toLocaleString('cs-CZ'));
         
-        return `
-            <div class="summary-content">
-                <h4>Základní Informace</h4>
-                <p><strong>Délka hovoru:</strong> ${duration}</p>
-                <p><strong>Datum a čas:</strong> ${new Date().toLocaleString('cs-CZ')}</p>
-                
-                <h4>Shrnutí Konverzace</h4>
-                <p><strong>Důvod volání:</strong> Demo hovor s AI asistentem</p>
-                <p><strong>Požadavky zákazníka:</strong> Testování funkcionality AI asistenta</p>
-                <p><strong>Poskytnutá řešení:</strong> AI asistent demonstroval schopnost vést konverzaci</p>
-                
-                <h4>Další Kroky</h4>
-                <p>• Zákazník byl informován o funkcích systému</p>
-                <p>• Doporučeno: Kontaktujte nás pro více informací</p>
-                
-                <h4>Poznámky</h4>
-                <p>Hovor proběhl bez problémů. Zákazník byl spokojen s ukázkou.</p>
-            </div>
-        `;
+        const summaryDiv = document.createElement('div');
+        summaryDiv.className = 'summary-content';
+        
+        // Create elements safely
+        const sections = [
+            { title: 'Základní Informace', items: [
+                `Délka hovoru: ${duration}`,
+                `Datum a čas: ${dateTime}`
+            ]},
+            { title: 'Shrnutí Konverzace', items: [
+                'Důvod volání: Demo hovor s AI asistentem',
+                'Požadavky zákazníka: Testování funkcionality AI asistenta',
+                'Poskytnutá řešení: AI asistent demonstroval schopnost vést konverzaci'
+            ]},
+            { title: 'Další Kroky', items: [
+                '• Zákazník byl informován o funkcích systému',
+                '• Doporučeno: Kontaktujte nás pro více informací'
+            ]},
+            { title: 'Poznámky', items: [
+                'Hovor proběhl bez problémů. Zákazník byl spokojen s ukázkou.'
+            ]}
+        ];
+        
+        sections.forEach(section => {
+            const h4 = document.createElement('h4');
+            h4.textContent = section.title;
+            summaryDiv.appendChild(h4);
+            
+            section.items.forEach(item => {
+                const p = document.createElement('p');
+                if (item.includes('<strong>')) {
+                    // Parse strong tags safely
+                    const parts = item.split(/<\/?strong>/);
+                    parts.forEach((part, idx) => {
+                        if (idx % 2 === 1) {
+                            const strong = document.createElement('strong');
+                            strong.textContent = part;
+                            p.appendChild(strong);
+                        } else if (part) {
+                            p.appendChild(document.createTextNode(part));
+                        }
+                    });
+                } else {
+                    p.textContent = item;
+                }
+                summaryDiv.appendChild(p);
+            });
+        });
+        
+        return summaryDiv.outerHTML;
     }
 
     saveTranscriptToSession() {
