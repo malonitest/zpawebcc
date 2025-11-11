@@ -137,7 +137,7 @@ app.get('/api/speech-config', async (req, res) => {
 });
 
 // Serve index.html for all other routes (SPA)
-app.get('*', (req, res) => {
+app.get('*', rateLimit, (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
