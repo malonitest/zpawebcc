@@ -3,10 +3,10 @@ const CONFIG = (() => {
     // If running on localhost or 127.x, point to local backend on port 7071
     const host = window.location.hostname;
     const isLocal = host === 'localhost' || host.startsWith('127.') || host === '0.0.0.0';
-    const apiHost = isLocal ? `http://${host}:7071` : '';
+    const apiHost = isLocal ? `http://${host}:7071` : 'https://cashndrive-functions.azurewebsites.net';
 
     return {
-        API_ENDPOINT: isLocal ? `${apiHost}/api` : '/api',
+        API_ENDPOINT: `${apiHost}/api`,
         COMMUNICATION_SERVICES_ENDPOINT: '', // Vyplní se z Azure
         AI_ENDPOINT: '', // Vyplní se z Azure
     };
