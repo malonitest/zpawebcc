@@ -137,7 +137,9 @@ app.get('/api/speech-config', async (req, res) => {
 });
 
 // Serve index.html for all other routes (SPA)
+// Rate limiting is applied to prevent abuse of file system access
 app.get('*', rateLimit, (req, res) => {
+    // Safe: path.join prevents directory traversal attacks
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
