@@ -1,0 +1,34 @@
+{
+  "name": "cashndrive-ai-assistant",
+  "version": "1.0.0",
+  "description": "AI hlasový asistent pro automatickou zákaznickou podporu s přirozenou konverzací v češtině",
+  "main": "index.js",
+  "scripts": {
+    "start:backend": "cd backend && func start",
+    "start:frontend": "cd frontend && python -m http.server 8000",
+    "deploy:backend": "cd backend && func azure functionapp publish cashndrive-functions",
+    "deploy:frontend": "az staticwebapp deploy --name cashndrive-frontend --resource-group cashndrive-rg --app-location frontend",
+    "test": "echo \"No tests specified yet\"",
+    "lint": "echo \"No linting configured yet\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/malonitest/zpawebcc.git"
+  },
+  "keywords": [
+    "AI",
+    "voice-assistant",
+    "azure",
+    "speech-services",
+    "chatbot",
+    "customer-support",
+    "czech",
+    "communication-services"
+  ],
+  "author": "CashNDrive Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/malonitest/zpawebcc/issues"
+  },
+  "homepage": "https://github.com/malonitest/zpawebcc#readme"
+}

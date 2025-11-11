@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo hovoru - CashNDrive AI Asistent</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1>CashNDrive</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Domů</a></li>
+                    <li><a href="demo.html" class="active">Demo hovoru</a></li>
+                    <li><a href="transcripts.html">Přepisy</a></li>
+                    <li><a href="contact.html">Kontakt</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="demo-section">
+            <div class="container">
+                <h2>Demo AI hlasového asistenta</h2>
+                <p class="subtitle">Vyzkoušejte si přirozenou konverzaci s AI asistentem</p>
+
+                <div class="call-interface">
+                    <!-- Status hovoru -->
+                    <div class="call-status" id="callStatus">
+                        <div class="status-indicator" id="statusIndicator">
+                            <span class="status-dot"></span>
+                            <span id="statusText">Připraven k hovoru</span>
+                        </div>
+                    </div>
+
+                    <!-- Ovládací tlačítka -->
+                    <div class="call-controls">
+                        <button id="startCallBtn" class="btn-call btn-start" onclick="startCall()">
+                            <span class="icon">📞</span>
+                            <span>Zahájit hovor</span>
+                        </button>
+                        <button id="endCallBtn" class="btn-call btn-end" onclick="endCall()" disabled>
+                            <span class="icon">📵</span>
+                            <span>Ukončit hovor</span>
+                        </button>
+                    </div>
+
+                    <!-- Vizualizace hovoru -->
+                    <div class="call-visualization" id="callVisualization" style="display: none;">
+                        <div class="audio-wave">
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                        </div>
+                        <p class="speaking-indicator" id="speakingIndicator"></p>
+                    </div>
+
+                    <!-- Přepis hovoru v reálném čase -->
+                    <div class="transcript-container" id="transcriptContainer" style="display: none;">
+                        <h3>Přepis konverzace</h3>
+                        <div class="transcript-box" id="transcriptBox">
+                            <!-- Přepis se bude přidávat dynamicky -->
+                        </div>
+                    </div>
+
+                    <!-- Shrnutí po ukončení hovoru -->
+                    <div class="summary-container" id="summaryContainer" style="display: none;">
+                        <h3>Shrnutí hovoru</h3>
+                        <div class="summary-box" id="summaryBox">
+                            <!-- Shrnutí se zobrazí po ukončení hovoru -->
+                        </div>
+                        <button class="btn btn-primary" onclick="resetDemo()">Nový hovor</button>
+                    </div>
+
+                    <!-- Informace o technologii -->
+                    <div class="tech-info">
+                        <h4>Použité technologie</h4>
+                        <div class="tech-badges">
+                            <span class="badge">Azure Communication Services</span>
+                            <span class="badge">Azure Speech Services (STT/TTS)</span>
+                            <span class="badge">Azure AI Foundry</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Instrukce pro uživatele -->
+                <div class="instructions">
+                    <h3>💡 Jak používat demo</h3>
+                    <ol>
+                        <li>Klikněte na tlačítko "Zahájit hovor" pro připojení k AI asistentovi</li>
+                        <li>Povolte přístup k mikrofonu ve vašem prohlížeči</li>
+                        <li>Mluvte přirozeně česky - asistent vás slyší a odpovídá</li>
+                        <li>Po ukončení hovoru se zobrazí shrnutí konverzace</li>
+                    </ol>
+                    <p class="note"><strong>Poznámka:</strong> Pro nejlepší zážitek použijte sluchátka a mluvte v tichém prostředí.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 CashNDrive. Všechna práva vyhrazena.</p>
+        </div>
+    </footer>
+
+    <!-- Audio element pro přehrávání TTS -->
+    <audio id="audioPlayer" style="display: none;"></audio>
+
+    <script src="js/main.js"></script>
+    <script src="js/call-handler.js"></script>
+    <script src="js/speech-services.js"></script>
+</body>
+</html>

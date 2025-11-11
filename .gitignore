@@ -1,0 +1,68 @@
+# Dependencies
+node_modules/
+package-lock.json
+npm-debug.log*
+
+# Azure Functions
+backend/local.settings.json
+backend/.python_packages/
+backend/bin/
+backend/obj/
+backend/.vscode/
+backend/__pycache__/
+
+# Environment variables
+.env
+.env.local
+.env.production
+.env.development
+*.local
+
+# Secrets
+*.key
+*.pem
+secrets/
+config/secrets.json
+
+# Build outputs
+dist/
+build/
+*.js.map
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Azure
+.azure/
+azure.err
+
+# Testing
+coverage/
+.nyc_output/
+*.test.js
+
+# Temp files
+tmp/
+temp/
+*.tmp
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Backup files
+*.bak
+*.backup

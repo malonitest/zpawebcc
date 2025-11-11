@@ -1,0 +1,37 @@
+/workspaces/zpawebcc
+├── LICENSE
+├── PROJECT_STRUCTURE.txt
+├── README.md
+├── backend
+│   ├── GenerateSummary.js
+│   ├── GetAIResponse.js
+│   ├── GetSpeechToken.js
+│   ├── HandleIncomingCall.js
+│   ├── host.json
+│   ├── local.settings.json
+│   └── package.json
+├── config
+│   ├── azure-config.md
+│   └── system-prompt.md
+├── docs
+│   ├── API.md
+│   ├── AZURE_SETUP.md
+│   ├── COMMANDS.md
+│   ├── DEPLOYMENT.md
+│   └── QUICKSTART.md
+├── frontend
+│   ├── contact.html
+│   ├── css
+│   │   └── styles.css
+│   ├── demo.html
+│   ├── index.html
+│   ├── js
+│   │   ├── call-handler.js
+│   │   ├── contact.js
+│   │   ├── main.js
+│   │   ├── speech-services.js
+│   │   └── transcripts.js
+│   └── transcripts.html
+└── package.json
+
+7 directories, 28 files

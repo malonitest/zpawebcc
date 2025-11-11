@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Přepisy hovorů - CashNDrive AI Asistent</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1>CashNDrive</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Domů</a></li>
+                    <li><a href="demo.html">Demo hovoru</a></li>
+                    <li><a href="transcripts.html" class="active">Přepisy</a></li>
+                    <li><a href="contact.html">Kontakt</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="transcripts-section">
+            <div class="container">
+                <h2>Historie přepisů hovorů</h2>
+                <p class="subtitle">Přehled všech dokončených hovorů s AI asistentem</p>
+
+                <!-- Filtry a vyhledávání -->
+                <div class="filters">
+                    <input type="text" id="searchInput" class="search-box" placeholder="Vyhledat v přepisech..." onkeyup="filterTranscripts()">
+                    <select id="dateFilter" class="filter-select" onchange="filterTranscripts()">
+                        <option value="all">Všechna data</option>
+                        <option value="today">Dnes</option>
+                        <option value="week">Tento týden</option>
+                        <option value="month">Tento měsíc</option>
+                    </select>
+                </div>
+
+                <!-- Seznam přepisů -->
+                <div class="transcripts-list" id="transcriptsList">
+                    <!-- Přepisy se načtou dynamicky -->
+                    <div class="empty-state" id="emptyState">
+                        <p>📝 Zatím nejsou k dispozici žádné přepisy.</p>
+                        <p>Zahájte hovor v <a href="demo.html">demo režimu</a> pro vytvoření prvního přepisu.</p>
+                    </div>
+                </div>
+
+                <!-- Modal pro detailní zobrazení přepisu -->
+                <div id="transcriptModal" class="modal" style="display: none;">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <div id="modalBody">
+                            <!-- Detail přepisu -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 CashNDrive. Všechna práva vyhrazena.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/transcripts.js"></script>
+</body>
+</html>

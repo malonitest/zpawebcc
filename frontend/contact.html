@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt - CashNDrive AI Asistent</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1>CashNDrive</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Domů</a></li>
+                    <li><a href="demo.html">Demo hovoru</a></li>
+                    <li><a href="transcripts.html">Přepisy</a></li>
+                    <li><a href="contact.html" class="active">Kontakt</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact-section">
+            <div class="container">
+                <h2>Kontaktujte nás</h2>
+                <p class="subtitle">Máte dotazy nebo potřebujete pomoc? Napište nám!</p>
+
+                <div class="contact-grid">
+                    <div class="contact-form-wrapper">
+                        <form id="contactForm" onsubmit="submitContactForm(event)">
+                            <div class="form-group">
+                                <label for="name">Jméno a příjmení *</label>
+                                <input type="text" id="name" name="name" required placeholder="Vaše celé jméno">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">E-mail *</label>
+                                <input type="email" id="email" name="email" required placeholder="vas@email.cz">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Telefon</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+420 XXX XXX XXX">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject">Předmět *</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">Vyberte předmět</option>
+                                    <option value="demo">Dotaz k demo</option>
+                                    <option value="technical">Technická podpora</option>
+                                    <option value="implementation">Implementace řešení</option>
+                                    <option value="other">Ostatní</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Zpráva *</label>
+                                <textarea id="message" name="message" rows="6" required placeholder="Popište váš dotaz nebo požadavek..."></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="consent" name="consent" required>
+                                    Souhlasím se zpracováním osobních údajů *
+                                </label>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-large">Odeslat zprávu</button>
+                        </form>
+
+                        <div id="formMessage" class="form-message" style="display: none;"></div>
+                    </div>
+
+                    <div class="contact-info">
+                        <h3>Další možnosti kontaktu</h3>
+                        
+                        <div class="info-card">
+                            <div class="info-icon">📧</div>
+                            <div class="info-content">
+                                <h4>E-mail</h4>
+                                <p><a href="mailto:info@cashndrive.cz">info@cashndrive.cz</a></p>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="info-icon">📞</div>
+                            <div class="info-content">
+                                <h4>Telefon</h4>
+                                <p>+420 XXX XXX XXX</p>
+                                <p class="small">Po-Pá: 9:00 - 17:00</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="info-icon">💬</div>
+                            <div class="info-content">
+                                <h4>AI Asistent</h4>
+                                <p>Vyzkoušejte <a href="demo.html">demo hovoru</a></p>
+                                <p class="small">Dostupný 24/7</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="info-icon">📍</div>
+                            <div class="info-content">
+                                <h4>Adresa</h4>
+                                <p>CashNDrive s.r.o.</p>
+                                <p>Praha, Česká republika</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-section">
+                    <h3>Často kladené otázky</h3>
+                    <div class="faq-grid">
+                        <div class="faq-item">
+                            <h4>Jak funguje AI asistent?</h4>
+                            <p>AI asistent používá Azure Communication Services pro příjem hovorů a Azure AI pro přirozenou konverzaci v češtině.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>Je demo zdarma?</h4>
+                            <p>Ano, demo verze je plně funkční a zdarma k vyzkoušení bez nutnosti registrace.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>Jak dlouho trvá implementace?</h4>
+                            <p>Standardní implementace trvá 2-4 týdny v závislosti na specifických požadavcích.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>Podporujete další jazyky?</h4>
+                            <p>Ano, systém lze nakonfigurovat pro podporu dalších jazyků pomocí Azure Speech Services.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 CashNDrive. Všechna práva vyhrazena.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html>
