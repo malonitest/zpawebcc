@@ -44,6 +44,15 @@ app.http('GetAIResponse', {
             // Připravit systémový prompt
             const systemPrompt = getSystemPrompt();
 
+            // DEBUG: logovat krátký snippet systémového promptu (bez citlivých údajů)
+            try {
+                const snippet = systemPrompt ? systemPrompt.slice(0, 200).replace(/\n/g, ' ') : '<empty>';
+                context.log('SYSTEM PROMPT SNIPPET:', snippet);
+            } catch (logErr) {
+                // neblokovat hlavní tok v případě chyby při logování
+                context.log('Failed to log system prompt snippet', logErr && logErr.message ? logErr.message : logErr);
+            }
+
             // Připravit zprávy pro AI
             const messages = [
                 { role: 'system', content: systemPrompt }
