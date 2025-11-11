@@ -50,8 +50,8 @@ async function startCall() {
 
         // Simulace úvodního pozdravu od AI (v reálné aplikaci přijde z Azure AI)
         setTimeout(() => {
-            addAIMessage('Dobrý den, jmenuji se Asistent CashNDrive. Jak vám mohu dnes pomoci?');
-            speakText('Dobrý den, jmenuji se Asistent CashNDrive. Jak vám mohu dnes pomoci?');
+            addAIMessage('Dobrý den, u telefonu Petr Král ze společnosti CashNDrive. Jak vám mohu dnes pomoci?');
+            speakText('Dobrý den, u telefonu Petr Král ze společnosti CashNDrive. Jak vám mohu dnes pomoci?');
         }, 1500);
 
         // Začít naslouchat uživateli
