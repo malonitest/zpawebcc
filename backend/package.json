@@ -9,6 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@azure/functions": "^4.5.0",
     "@azure/communication-calling": "^1.14.0",
     "@azure/communication-common": "^2.3.0",
     "@azure/openai": "^1.0.0-beta.12",
@@ -16,8 +17,5 @@
     "dotenv": "^16.6.1",
     "express": "^5.1.0",
     "microsoft-cognitiveservices-speech-sdk": "^1.35.0"
-  },
-  "devDependencies": {
-    "@azure/functions": "^4.5.0"
   }
 }
