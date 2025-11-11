@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash and Drive - AI Asistent</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Cash and Drive</h1>
+            <p class="subtitle">AI Asistent pro zákaznickou podporu</p>
+        </header>
+
+        <main>
+            <!-- Call Control Section -->
+            <div id="call-control" class="card">
+                <h2>Ovládání hovoru</h2>
+                <div class="call-status">
+                    <div class="status-indicator" id="status-indicator">
+                        <span class="status-dot inactive"></span>
+                        <span id="status-text">Neaktivní</span>
+                    </div>
+                </div>
+
+                <div class="call-buttons">
+                    <button id="start-call-btn" class="btn btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                        Přijmout hovor
+                    </button>
+                    <button id="end-call-btn" class="btn btn-danger" disabled>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10.68 13.31a16 16 0 0 0 3.41 2.6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7 2 2 0 0 1 1.72 2v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.42 19.42 0 0 1-3.33-2.67m-2.67-3.34a19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91"></path>
+                            <line x1="23" y1="1" x2="1" y2="23"></line>
+                        </svg>
+                        Ukončit hovor
+                    </button>
+                </div>
+
+                <div id="call-timer" class="call-timer" style="display: none;">
+                    <span>Délka hovoru: </span>
+                    <span id="timer-display">00:00</span>
+                </div>
+            </div>
+
+            <!-- Conversation Section -->
+            <div id="conversation-section" class="card" style="display: none;">
+                <h2>Konverzace</h2>
+                <div id="conversation-box" class="conversation-box">
+                    <!-- Messages will be added here dynamically -->
+                </div>
+
+                <div class="input-section">
+                    <input 
+                        type="text" 
+                        id="user-input" 
+                        placeholder="Napište svou zprávu..."
+                        disabled
+                    >
+                    <button id="send-btn" class="btn btn-secondary" disabled>Odeslat</button>
+                </div>
+            </div>
+
+            <!-- Summary Section (shown after call ends) -->
+            <div id="summary-section" class="card" style="display: none;">
+                <h2>Shrnutí hovoru</h2>
+                <div id="summary-content">
+                    <!-- Summary will be displayed here -->
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Cash and Drive - Powered by Azure AI Services</p>
+        </footer>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
