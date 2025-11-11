@@ -203,11 +203,22 @@ class CallManager {
             minute: '2-digit' 
         });
         
-        messageDiv.innerHTML = `
-            <div class="message-role">${roleLabel}</div>
-            <div class="message-text">${text}</div>
-            <div class="message-time">${time}</div>
-        `;
+        // Create elements safely without innerHTML to prevent XSS
+        const roleDiv = document.createElement('div');
+        roleDiv.className = 'message-role';
+        roleDiv.textContent = roleLabel;
+        
+        const textDiv = document.createElement('div');
+        textDiv.className = 'message-text';
+        textDiv.textContent = text;
+        
+        const timeDiv = document.createElement('div');
+        timeDiv.className = 'message-time';
+        timeDiv.textContent = time;
+        
+        messageDiv.appendChild(roleDiv);
+        messageDiv.appendChild(textDiv);
+        messageDiv.appendChild(timeDiv);
         
         this.conversationBox.appendChild(messageDiv);
         this.conversationBox.scrollTop = this.conversationBox.scrollHeight;
@@ -258,63 +269,64 @@ class CallManager {
     displaySummary(metadata) {
         this.summarySection.style.display = 'block';
         
-        let topicsHtml = '';
+        // Clear previous content
+        this.summaryContent.innerHTML = '';
+        
+        // Helper function to create summary item
+        const createSummaryItem = (label, value) => {
+            const item = document.createElement('div');
+            item.className = 'summary-item';
+            
+            const labelDiv = document.createElement('div');
+            labelDiv.className = 'summary-label';
+            labelDiv.textContent = label;
+            
+            const valueDiv = document.createElement('div');
+            valueDiv.className = 'summary-value';
+            valueDiv.textContent = value;
+            
+            item.appendChild(labelDiv);
+            item.appendChild(valueDiv);
+            return item;
+        };
+        
+        // Add summary items
+        this.summaryContent.appendChild(createSummaryItem('ID hovoru:', metadata.sessionId));
+        this.summaryContent.appendChild(createSummaryItem('Začátek hovoru:', new Date(metadata.startTime).toLocaleString('cs-CZ')));
+        this.summaryContent.appendChild(createSummaryItem('Konec hovoru:', new Date(metadata.endTime).toLocaleString('cs-CZ')));
+        this.summaryContent.appendChild(createSummaryItem('Délka hovoru:', metadata.duration));
+        this.summaryContent.appendChild(createSummaryItem('Počet zpráv:', metadata.messageCount.toString()));
+        
+        // Add topics if available
         if (metadata.summary.topicsDiscussed && metadata.summary.topicsDiscussed.length > 0) {
-            topicsHtml = `
-                <div class="summary-item">
-                    <div class="summary-label">Diskutovaná témata:</div>
-                    <div class="summary-value">${metadata.summary.topicsDiscussed.join(', ')}</div>
-                </div>
-            `;
-        }
-
-        let keyPointsHtml = '';
-        if (metadata.summary.keyPoints && metadata.summary.keyPoints.length > 0) {
-            keyPointsHtml = `
-                <div class="summary-item">
-                    <div class="summary-label">Klíčové body:</div>
-                    <ul class="summary-list">
-                        ${metadata.summary.keyPoints.map(point => `<li>${point}</li>`).join('')}
-                    </ul>
-                </div>
-            `;
+            this.summaryContent.appendChild(createSummaryItem('Diskutovaná témata:', metadata.summary.topicsDiscussed.join(', ')));
         }
         
-        this.summaryContent.innerHTML = `
-            <div class="summary-item">
-                <div class="summary-label">ID hovoru:</div>
-                <div class="summary-value">${metadata.sessionId}</div>
-            </div>
+        // Add outcome
+        this.summaryContent.appendChild(createSummaryItem('Výsledek:', metadata.summary.outcome));
+        
+        // Add key points if available
+        if (metadata.summary.keyPoints && metadata.summary.keyPoints.length > 0) {
+            const item = document.createElement('div');
+            item.className = 'summary-item';
             
-            <div class="summary-item">
-                <div class="summary-label">Začátek hovoru:</div>
-                <div class="summary-value">${new Date(metadata.startTime).toLocaleString('cs-CZ')}</div>
-            </div>
+            const labelDiv = document.createElement('div');
+            labelDiv.className = 'summary-label';
+            labelDiv.textContent = 'Klíčové body:';
             
-            <div class="summary-item">
-                <div class="summary-label">Konec hovoru:</div>
-                <div class="summary-value">${new Date(metadata.endTime).toLocaleString('cs-CZ')}</div>
-            </div>
+            const ul = document.createElement('ul');
+            ul.className = 'summary-list';
             
-            <div class="summary-item">
-                <div class="summary-label">Délka hovoru:</div>
-                <div class="summary-value">${metadata.duration}</div>
-            </div>
+            metadata.summary.keyPoints.forEach(point => {
+                const li = document.createElement('li');
+                li.textContent = point;
+                ul.appendChild(li);
+            });
             
-            <div class="summary-item">
-                <div class="summary-label">Počet zpráv:</div>
-                <div class="summary-value">${metadata.messageCount}</div>
-            </div>
-            
-            ${topicsHtml}
-            
-            <div class="summary-item">
-                <div class="summary-label">Výsledek:</div>
-                <div class="summary-value">${metadata.summary.outcome}</div>
-            </div>
-            
-            ${keyPointsHtml}
-        `;
+            item.appendChild(labelDiv);
+            item.appendChild(ul);
+            this.summaryContent.appendChild(item);
+        }
         
         // Scroll to summary
         this.summarySection.scrollIntoView({ behavior: 'smooth' });
