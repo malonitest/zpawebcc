@@ -2,7 +2,7 @@
   "name": "cashndrive-backend",
   "version": "1.0.0",
   "description": "Azure Functions backend for CashNDrive AI Voice Assistant",
-  "main": "index.js",
+  "main": "GetAIResponse.js",
   "scripts": {
     "start": "node server.js",
     "func": "func start",

@@ -164,7 +164,7 @@ async function getAIResponse(userText) {
             conversationHistory: window.callMessages || []
         };
 
-        const result = await APIClient.post('/GetAIResponse', payload);
+        const result = await APIClient.post('/getairesponse', payload);
 
         // Backend returns { response: '...', timestamp: '...' }
         if (result && result.response) {
