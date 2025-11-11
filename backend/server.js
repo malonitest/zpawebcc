@@ -119,6 +119,23 @@ app.post('/api/HandleIncomingCall', async (req, res) => {
   }
 });
 
+// Root endpoint
+app.get('/', (req, res) => {
+  res.json({ 
+    name: 'CashNDrive Backend API',
+    version: '1.0.0',
+    status: 'running',
+    endpoints: {
+      health: 'GET /api/health',
+      getSpeechToken: 'GET /api/GetSpeechToken',
+      getAIResponse: 'POST /api/GetAIResponse',
+      generateSummary: 'POST /api/GenerateSummary',
+      handleIncomingCall: 'POST /api/HandleIncomingCall'
+    },
+    documentation: 'https://github.com/malonitest/zpawebcc'
+  });
+});
+
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'CashNDrive Backend is running' });
