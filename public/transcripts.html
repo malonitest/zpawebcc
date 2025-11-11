@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Přepisy Hovorů - CashNDrive AI Asistent</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <h1>CashNDrive AI Asistent</h1>
+                <ul class="nav-links">
+                    <li><a href="index.html">Domů</a></li>
+                    <li><a href="call.html">Demo Hovoru</a></li>
+                    <li><a href="transcripts.html" class="active">Přepisy</a></li>
+                    <li><a href="contact.html">Kontakt</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="transcripts-section">
+            <div class="container">
+                <h2>Přepisy Hovorů</h2>
+                <p class="section-description">
+                    Zde se zobrazují přepisy hovorů z aktuální relace. 
+                    Poznámka: Přepisy nejsou trvale ukládány.
+                </p>
+
+                <div id="transcriptsList" class="transcripts-list">
+                    <div class="no-transcripts">
+                        <p>Zatím nejsou k dispozici žádné přepisy.</p>
+                        <p>Zahajte hovor v <a href="call.html">demo sekci</a> pro vytvoření přepisu.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 CashNDrive AI Asistent. Postaveno na Azure AI.</p>
+        </div>
+    </footer>
+
+    <script src="transcripts.js"></script>
+</body>
+</html>
