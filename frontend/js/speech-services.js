@@ -158,13 +158,21 @@ async function getAIResponse(userText) {
         // V produkci: volání Azure AI Foundry API
         console.log('Getting AI response for:', userText);
 
-        // Pro demo: simulace AI odpovědi
-        const responses = generateDemoAIResponse(userText);
-        
-        // Simulace zpoždění API
-        await new Promise(resolve => setTimeout(resolve, 800));
-        
-        return responses;
+        // Call backend AI function (GetAIResponse)
+        const payload = {
+            userMessage: userText,
+            conversationHistory: window.callMessages || []
+        };
+
+        const result = await APIClient.post('/GetAIResponse', payload);
+
+        // Backend returns { response: '...', timestamp: '...' }
+        if (result && result.response) {
+            return result.response;
+        }
+
+        // fallback
+        return 'Omlouvám se, nedostal jsem odpověď od AI. Zkuste to prosím znovu.';
 
     } catch (error) {
         console.error('Failed to get AI response:', error);
