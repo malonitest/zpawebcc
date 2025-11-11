@@ -4,6 +4,8 @@ let currentCall = null;
 let callStartTime = null;
 let callMessages = [];
 let isCallActive = false;
+// Expose callMessages to global so other modules (speech-services) can access conversation history
+window.callMessages = callMessages;
 
 // ===== Inicializace při načtení stránky =====
 document.addEventListener('DOMContentLoaded', function() {
@@ -147,6 +149,8 @@ function addUserMessage(text) {
         type: 'user'
     };
     callMessages.push(message);
+    // sync global reference
+    window.callMessages = callMessages;
     displayMessage(message);
 }
 
@@ -158,6 +162,8 @@ function addAIMessage(text) {
         type: 'ai'
     };
     callMessages.push(message);
+    // sync global reference
+    window.callMessages = callMessages;
     displayMessage(message);
 }
 
