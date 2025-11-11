@@ -1,0 +1,26 @@
+{
+  "name": "cashndrive-ai-assistant",
+  "version": "1.0.0",
+  "description": "AI voice assistant for cashndrive using Azure Communication Services, AI Foundry, and Speech Services",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "echo 'Static site - no build required'",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "azure",
+    "ai",
+    "voice-assistant",
+    "communication-services"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@azure/communication-calling": "^1.14.0",
+    "@azure/communication-common": "^2.3.0",
+    "@azure/openai": "^1.0.0-beta.12",
+    "express": "^4.18.2",
+    "dotenv": "^16.3.1"
+  }
+}

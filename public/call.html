@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Hovoru - CashNDrive AI Asistent</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <h1>CashNDrive AI Asistent</h1>
+                <ul class="nav-links">
+                    <li><a href="index.html">Domů</a></li>
+                    <li><a href="call.html" class="active">Demo Hovoru</a></li>
+                    <li><a href="transcripts.html">Přepisy</a></li>
+                    <li><a href="contact.html">Kontakt</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="call-section">
+            <div class="container">
+                <h2>AI Asistent - Live Demo</h2>
+                
+                <div class="call-interface">
+                    <div class="call-status">
+                        <div class="status-indicator" id="statusIndicator">
+                            <span class="status-dot"></span>
+                            <span id="statusText">Připraven</span>
+                        </div>
+                    </div>
+
+                    <div class="call-controls">
+                        <button id="startCallBtn" class="call-button start-call">
+                            📞 Zahájit Hovor
+                        </button>
+                        <button id="endCallBtn" class="call-button end-call" disabled>
+                            🔴 Ukončit Hovor
+                        </button>
+                    </div>
+
+                    <div class="call-info">
+                        <div class="info-section">
+                            <h3>Průběh Hovoru</h3>
+                            <div id="callDuration" class="duration">00:00</div>
+                        </div>
+                    </div>
+
+                    <div class="transcript-section">
+                        <h3>Přepis Hovoru</h3>
+                        <div id="transcriptContainer" class="transcript-container">
+                            <p class="transcript-placeholder">Přepis se zobrazí po zahájení hovoru...</p>
+                        </div>
+                    </div>
+
+                    <div class="summary-section" id="summarySection" style="display: none;">
+                        <h3>Shrnutí Hovoru</h3>
+                        <div id="summaryContainer" class="summary-container">
+                            <!-- Summary will be displayed here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="instructions">
+                    <h3>Instrukce</h3>
+                    <ul>
+                        <li>Klikněte na "Zahájit Hovor" pro spuštění demo</li>
+                        <li>AI asistent vás pozdraví a zahájí konverzaci</li>
+                        <li>Mluvte přirozeně - AI vás slyší a rozumí</li>
+                        <li>Po ukončení hovoru se zobrazí shrnutí</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 CashNDrive AI Asistent. Postaveno na Azure AI.</p>
+        </div>
+    </footer>
+
+    <script src="call.js"></script>
+</body>
+</html>

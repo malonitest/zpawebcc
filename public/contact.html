@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt - CashNDrive AI Asistent</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <h1>CashNDrive AI Asistent</h1>
+                <ul class="nav-links">
+                    <li><a href="index.html">Domů</a></li>
+                    <li><a href="call.html">Demo Hovoru</a></li>
+                    <li><a href="transcripts.html">Přepisy</a></li>
+                    <li><a href="contact.html" class="active">Kontakt</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact-section">
+            <div class="container">
+                <h2>Kontaktní Formulář</h2>
+                <p class="section-description">
+                    Pokud máte dotazy nebo potřebujete pomoc, neváhejte nás kontaktovat.
+                </p>
+
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Jméno a příjmení *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mail *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Telefon</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Předmět *</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Zpráva *</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit" class="cta-button">Odeslat zprávu</button>
+                </form>
+
+                <div id="formMessage" class="form-message" style="display: none;"></div>
+
+                <div class="contact-info">
+                    <h3>Další Možnosti Kontaktu</h3>
+                    <p>
+                        <strong>Pro technickou podporu:</strong><br>
+                        Vyzkoušejte našeho AI asistenta v <a href="call.html">demo sekci</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 CashNDrive AI Asistent. Postaveno na Azure AI.</p>
+        </div>
+    </footer>
+
+    <script src="contact.js"></script>
+</body>
+</html>
