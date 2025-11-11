@@ -2,6 +2,7 @@
   "routes": [
     {
       "route": "/api/*",
+      "rewrite": "https://cashndrive-functions.azurewebsites.net/api/*",
       "allowedRoles": ["anonymous"]
     }
   ],
